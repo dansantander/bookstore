@@ -3,10 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book'
 
-function Booklist({ books }) {
+const BookList = ({ books }) => {
+
+  console.log(books)
   return(
   <div className="booklist">
     <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Category</th>
+        </tr>
+      </thead>
       <tbody>
       { books.map((book)=>{
         return(
@@ -20,9 +29,19 @@ function Booklist({ books }) {
   )
 }
 
-Booklist.propTypes = {
-
+BookList.propTypes = {
+  books: PropTypes.array
 };
 
-const bookListConector = connect(mapDispatchToProps)(Booklist);
-export default bookListConector;
+/* PropTypes ofrece una manera de verificar dinámicamente las props de nuestros componentes */
+
+/* BookList.defaultProps = {
+  books: [] ,
+}; */
+
+const mapStateToProps = state => ({
+  books: state.books,
+});
+
+export default connect(mapStateToProps)(BookList);
+

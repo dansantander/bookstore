@@ -13,3 +13,16 @@
     'Courier New',
     monospace;
 }
+
+.booklist table {
+  border: 1px solid gray;
+}
+
+table th {
+  background-color: rgb(32, 32, 32);
+  color: rgb(226, 226, 226);
+}
+
+td {
+  padding: 2rem 2rem;
+}

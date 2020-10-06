@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import rootReducer from './src/reducers/index'
+import rootReducer from './reducers/index'
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-const defaultState ={
+const defaultState = {
   books: [
     {
       id: parseInt(Math.random() * 1000, 10), //parseint(string,base)
@@ -17,7 +17,7 @@ const defaultState ={
     {
       id: parseInt(Math.random() * 1000, 10),
       title: 'IT',
-      category: 'Horror-Fi',
+      category: 'Horror',
     },
     {
       id: parseInt(Math.random() * 1000, 10),
@@ -29,8 +29,10 @@ const defaultState ={
 
 const store = createStore(
   rootReducer,
-  defaultState
+  { books: defaultState.books }
 );
+
+/* const store = createStore(rootReducer) */
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,10 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 
-function Bookform() {
-
-  const categories = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"];
+const Bookform = () => {
+  const CATEGORIES = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"];
 
   return(
   <form className="bookform">
@@ -13,9 +10,8 @@ function Bookform() {
 
     <label>Category</label>
     <select className="category">
-      { categories.map( category => {
-            <option value={category}>{category}</option>
-          }
+      { CATEGORIES.map( category => 
+            <option key={parseInt(Math.random() * 1000, 10)} value={category}>{category}</option>
         )
       }
     </select>
