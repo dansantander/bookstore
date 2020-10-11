@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book'
+import { removeBook } from '../actions';
 
-const BookList = ({ books }) => {
+const BookList = ({ books, getRidOfBook }) => {
 
-  console.log(books)
+  const handleRemoveBook = (book)=> {
+    /* getRidOfBook(book) */
+    console.log(book)
+  } 
+
   return(
   <div className="booklist">
     <table>
@@ -19,10 +24,11 @@ const BookList = ({ books }) => {
       <tbody>
       { books.map((book)=>{
         return(
-          <Book id={book.id} title={book.title} category={book.category}/>
+          <Book key={book.id} id={book.id} title={book.title} category={book.category} remove={handleRemoveBook}/>
           )
         })
       }
+      {console.log(books)}
       </tbody>
     </table>
   </div>
@@ -35,13 +41,19 @@ BookList.propTypes = {
 
 /* PropTypes ofrece una manera de verificar dinámicamente las props de nuestros componentes */
 
-/* BookList.defaultProps = {
+BookList.defaultProps = {
   books: [] ,
-}; */
+};
 
 const mapStateToProps = state => ({
   books: state.books,
 });
 
-export default connect(mapStateToProps)(BookList);
+const mapDispatchToProps = dispatch => ({
+  getRidOfBook: (book)=>{
+    dispatch(removeBook(book, book.id))
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 
