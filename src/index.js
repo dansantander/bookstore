@@ -24,6 +24,7 @@ const defaultState = {
       category: 'Learning',
     },
   ],
+  filter: 'All',
 };
 
 const store = createStore(
